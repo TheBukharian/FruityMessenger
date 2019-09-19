@@ -28,7 +28,10 @@ class MainActivity : AppCompatActivity() {
 
             Log.d("MainActivity","Email is: $EmailText")
             Log.d("MainActivity","Pasword: $PasswordText")
-            //Firebase Authentification to create a user with an account
+
+                        //Firebase Authentification to create a user with an account
+
+
         }
 
 

@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:state_focused="true">
-        <shape android:shape="rectangle">
-            <corners android:radius="60dip"/>
-            <stroke android:width="3dip" android:color="#EEEEEE"/>
-            <gradient android:angle="180" android:startColor="#9C525252" android:endColor="#9C525252"/>
-        </shape>
-    </item>
+
     <item>
         <shape android:shape="rectangle">
             <corners android:radius="60dip"/>

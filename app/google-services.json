@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "885938200353",
+    "firebase_url": "https://fruitymessenger.firebaseio.com",
+    "project_id": "fruitymessenger",
+    "storage_bucket": "fruitymessenger.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:885938200353:android:932aeaea5e022e2da92860",
+        "android_client_info": {
+          "package_name": "com.asilbek.messenger"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "885938200353-upii9sebgtgnifbp9r294di4b3sieuf1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxZulyaUHKKQxxDrP7Y4cWHFqhFKEe-Ic"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "885938200353-upii9sebgtgnifbp9r294di4b3sieuf1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

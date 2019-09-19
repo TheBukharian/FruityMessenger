@@ -44,6 +44,7 @@
             android:paddingLeft="23dp"
 
              />
+
         <EditText
             android:id="@+id/PasswordText"
             android:layout_width="333dp"
@@ -53,8 +54,8 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="50dp"
             android:background="@drawable/circled_angles"
-            android:hint="Password"
-            android:inputType="textPersonName"
+            android:hint="Create a password..."
+            android:inputType="textPassword"
             android:paddingLeft="23dp"
 
             />
@@ -75,9 +76,11 @@
             android:id="@+id/Already"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:clickable="true"
+            android:linksClickable="true"
             android:text="Already have an account?"
             android:textAlignment="center"
-            android:layout_marginTop="20dp"
             android:textColor="#FFFFFF"
             android:textSize="15sp"
             android:textStyle="bold|italic" />
