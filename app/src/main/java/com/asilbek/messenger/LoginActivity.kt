@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -30,6 +31,10 @@ backText.setOnClickListener {
         loginBtn.setOnClickListener {
             val email=EmailLogin.text.toString()
             val password=PasswordLogin.text.toString()
+
+            FirebaseAuth.getInstance().signInWithEmailAndPassword(email,password)
+             //   .addOnCompleteListener()
+            
         }
     }
 }

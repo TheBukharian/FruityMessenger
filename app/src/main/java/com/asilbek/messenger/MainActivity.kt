@@ -27,35 +27,8 @@ class MainActivity : AppCompatActivity() {
 
 
         RegBtn.setOnClickListener {
-            val email = EmailText.text.toString()
-            val password = PasswordText.text.toString()
 
-            if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Please Enter the Email and Password!", Toast.LENGTH_LONG)
-                    .show()
-                return@setOnClickListener
-            }
-
-            Log.d("MainActivity", "Email is: $email")
-            Log.d("MainActivity", "Pasword: $password")
-
-            //Firebase Authentification to create a user with an account
-
-            FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener {
-                    if (!it.isSuccessful) return@addOnCompleteListener
-
-                    // Else if successful
-
-                    Log.d("Main", "Successfully created user with uid: ${it.result?.user?.uid}")
-
-                }
-                .addOnFailureListener {
-                    Log.d("Main", "Failed to create a user: ${it.message}")
-                    Toast.makeText(this, "Failed!Check Network Connection!", Toast.LENGTH_LONG)
-                        .show()
-                }
-
+            performRegistter()
 
             Already.setOnClickListener {
                 Log.d("MainActivity", "Try to show login activity")
@@ -66,5 +39,35 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
+    }
+    private fun performRegistter(){
+        val email = EmailText.text.toString()
+        val password = PasswordText.text.toString()
+
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Please Enter the Email and Password!", Toast.LENGTH_LONG)
+                .show()
+            return
+        }
+
+        Log.d("MainActivity", "Email is: $email")
+        Log.d("MainActivity", "Pasword: $password")
+
+        //Firebase Authentification to create a user with an account
+
+        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener {
+                if (!it.isSuccessful) return@addOnCompleteListener
+
+                // Else if successful
+
+                Log.d("Main", "Successfully created user with uid: ${it.result?.user?.uid}")
+
+            }
+            .addOnFailureListener {
+                Log.d("Main", "Failed to create a user: ${it.message}")
+                Toast.makeText(this, "Failed!Check Network Connection!", Toast.LENGTH_LONG)
+                    .show()
+            }
     }
 }
