@@ -1,5 +1,6 @@
 package com.asilbek.messenger
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.graphics.drawable.AnimationDrawable
@@ -27,11 +28,17 @@ class MainActivity : AppCompatActivity() {
 
             Log.d("MainActivity","Email is: $EmailText")
             Log.d("MainActivity","Pasword: $PasswordText")
+            //Firebase Authentification to create a user with an account
         }
 
 
         Already.setOnClickListener {
             Log.d("MainActivity","Try to show login activity")
+
+            // Launch the login activity somehow
+
+            val intent=Intent(this,LoginActivity::class.java)
+            startActivity(intent)
         }
     }
 }
