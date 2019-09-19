@@ -6,10 +6,13 @@ import android.os.Bundle
 import android.graphics.drawable.AnimationDrawable
 import android.util.Log
 import android.widget.LinearLayout
+import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
+    lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,26 +25,46 @@ class MainActivity : AppCompatActivity() {
 
 
 
+
         RegBtn.setOnClickListener {
-            val email=EmailText.text.toString()
-            val password=PasswordText.text.toString()
+            val email = EmailText.text.toString()
+            val password = PasswordText.text.toString()
 
-            Log.d("MainActivity","Email is: $EmailText")
-            Log.d("MainActivity","Pasword: $PasswordText")
+            if (email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Please Enter the Email and Password!", Toast.LENGTH_LONG)
+                    .show()
+                return@setOnClickListener
+            }
 
-                        //Firebase Authentification to create a user with an account
+            Log.d("MainActivity", "Email is: $email")
+            Log.d("MainActivity", "Pasword: $password")
+
+            //Firebase Authentification to create a user with an account
+
+            FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener {
+                    if (!it.isSuccessful) return@addOnCompleteListener
+
+                    // Else if successful
+
+                    Log.d("Main", "Successfully created user with uid: ${it.result?.user?.uid}")
+
+                }
+                .addOnFailureListener {
+                    Log.d("Main", "Failed to create a user: ${it.message}")
+                    Toast.makeText(this, "Failed!Check Network Connection!", Toast.LENGTH_LONG)
+                        .show()
+                }
 
 
-        }
+            Already.setOnClickListener {
+                Log.d("MainActivity", "Try to show login activity")
 
+                // Launch the login activity somehow
 
-        Already.setOnClickListener {
-            Log.d("MainActivity","Try to show login activity")
-
-            // Launch the login activity somehow
-
-            val intent=Intent(this,LoginActivity::class.java)
-            startActivity(intent)
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 }
