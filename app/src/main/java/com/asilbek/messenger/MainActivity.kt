@@ -1,6 +1,7 @@
 package com.asilbek.messenger
 
 import android.content.Intent
+import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.graphics.drawable.AnimationDrawable
@@ -30,16 +31,26 @@ class MainActivity : AppCompatActivity() {
 
             performRegistter()
 
-            Already.setOnClickListener {
-                Log.d("MainActivity", "Try to show login activity")
 
-                // Launch the login activity somehow
+        }
+        Already.setOnClickListener {
+            //This will underline a text
+            Already.setPaintFlags(Already.getPaintFlags() or Paint.UNDERLINE_TEXT_FLAG)
+            Already.setText("Already have an account?")
 
-                val intent = Intent(this, LoginActivity::class.java)
-                startActivity(intent)
-            }
+
+            Log.d("MainActivity", "Try to show login activity")
+
+
+            // Launch the login activity somehow
+
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
         }
     }
+
+
+
     private fun performRegistter(){
         val email = EmailText.text.toString()
         val password = PasswordText.text.toString()

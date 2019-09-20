@@ -34,7 +34,7 @@ backText.setOnClickListener {
 
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email,password)
              //   .addOnCompleteListener()
-            
+
         }
     }
 }

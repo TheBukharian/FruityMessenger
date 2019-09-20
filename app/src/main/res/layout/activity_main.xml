@@ -75,14 +75,31 @@
         <TextView
             android:id="@+id/Already"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="51dp"
             android:layout_marginTop="20dp"
             android:clickable="true"
+            android:textColorLink="#fff"
             android:linksClickable="true"
             android:text="Already have an account?"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="15sp"
             android:textStyle="bold|italic" />
+
+        <Button
+            android:id="@+id/PhotoBtn"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="-480dp"
+            android:layout_marginEnd="50dp"
+            android:shadowColor="#fff"
+            android:background="@drawable/shadow"
+            android:fontFamily="sans-serif-black"
+            android:text="Select Photo"
+            android:textColor="#2D000000" />
+
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
