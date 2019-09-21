@@ -8,7 +8,7 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_register.*
 
 class LoginActivity :AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +21,7 @@ class LoginActivity :AppCompatActivity(){
         animationDrawable2.start()
 
 backText.setOnClickListener {
-    Log.d("MainActivity","We are back!")
+    Log.d("RegisterActivity","We are back!")
 
     // Launch the main activity
 
