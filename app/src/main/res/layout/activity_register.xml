@@ -126,7 +126,7 @@
             android:background="@drawable/rubishbtn"
             app:srcCompat="@android:drawable/ic_menu_delete" />
 
-        
+
 
 
     </LinearLayout>
