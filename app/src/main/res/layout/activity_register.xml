@@ -126,7 +126,13 @@
             android:background="@drawable/rubishbtn"
             app:srcCompat="@android:drawable/ic_menu_delete" />
 
-
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="450dp"
+            android:layout_height="450dp"
+            android:layout_marginTop="250dp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/kkk" />
 
 
     </LinearLayout>
