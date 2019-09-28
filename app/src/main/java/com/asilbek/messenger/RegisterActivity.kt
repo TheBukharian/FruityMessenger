@@ -2,6 +2,7 @@ package com.asilbek.messenger
 
 import android.app.Activity
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,7 +10,6 @@ import android.graphics.drawable.AnimationDrawable
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.provider.MediaStore
-
 import android.util.Log
 import android.view.View
 import android.view.View.*
@@ -42,13 +42,18 @@ class RegisterActivity : AppCompatActivity() {
             intent.type="image/*"
             startActivityForResult(intent,0)
 
+
+            //                //NEED TO CORRECT THIS PART FOR DELETING
+
+
+
 //            Thread.sleep(1000)
 //
 //            val b = findViewById<View>(R.id.deleteImageBtn)
 //            b.setVisibility(VISIBLE)
 //            deleteImageBtn.setOnClickListener {
 //
-//                //NEED TO CORRECT THIS PART FOR DELETING
+
 //
 //                if (PhotoImageView!=null&& PhotoBtn!=null){ PhotoImageView.setImageResource(0)
 //                    }
@@ -142,6 +147,10 @@ class RegisterActivity : AppCompatActivity() {
                 Toast.makeText(this, "An account created successfully!", Toast.LENGTH_LONG)
                     .show()
 
+                val intent = Intent(this, LatestMessagesActivity::class.java)
+                intent.flags=Intent.FLAG_ACTIVITY_CLEAR_TASK.or(FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
+
             }
             .addOnFailureListener {
                 Log.d("RegisterActivity", "Failed to create a user: ${it.message}")
@@ -178,6 +187,9 @@ class RegisterActivity : AppCompatActivity() {
             .addOnSuccessListener{
 
                 Log.d("RegisterActivity","Finally we saved the User to Firebase database!")
+            }
+            .addOnFailureListener {
+                Log.d("RegisterActivity","Failed to save the User to Firebase database!")
             }
     }
 
