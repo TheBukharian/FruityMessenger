@@ -2,7 +2,13 @@ package com.asilbek.messenger
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
@@ -25,8 +31,23 @@ supportActionBar?.title="Select User"
 
         recyclerView_newMessage.adapter=adapter
 
+        fetchUsers()
 
 
+    }
+    private fun fetchUsers(){
+        val ref = FirebaseDatabase.getInstance().getReference("/users")
+        ref.addListenerForSingleValueEvent(object: ValueEventListener{
+            override fun onDataChange(p0: DataSnapshot) {
+                p0.children.forEach{
+                    Log.d("NewMessage",it.toString())
+                }
+            }
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+
+        })
     }
 }
 

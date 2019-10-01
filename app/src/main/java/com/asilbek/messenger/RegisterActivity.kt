@@ -75,10 +75,7 @@ class RegisterActivity : AppCompatActivity() {
 
             performRegistter()
 
-            //Removing inputs text values
-            NameText.text.clear()
-            EmailText.text.clear()
-            PasswordText.text.clear()
+
 
 
 
