@@ -2,7 +2,11 @@ package com.asilbek.messenger
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.GroupieViewHolder
+import com.xwray.groupie.Item
+
 import kotlinx.android.synthetic.main.activity_new_message.*
 
 class NewMessageActivity : AppCompatActivity() {
@@ -13,9 +17,28 @@ class NewMessageActivity : AppCompatActivity() {
 
 supportActionBar?.title="Select User"
 
+        val adapter = GroupAdapter<GroupieViewHolder>()
 
-        recyclerView_newMessage.adapter
-        recyclerView_newMessage.layoutManager=LinearLayoutManager(this)
+        adapter.add(UserItem())
+        adapter.add(UserItem())
+        adapter.add(UserItem())
+
+        recyclerView_newMessage.adapter=adapter
+
+
 
     }
 }
+
+class UserItem:Item<GroupieViewHolder>(){
+    override fun bind(viewHolder: GroupieViewHolder, position: Int) {
+
+// will be called in our list for each user object later...
+
+    }
+
+    override fun getLayout(): Int {
+return R.layout.user_row_new_message
+    }
+}
+
