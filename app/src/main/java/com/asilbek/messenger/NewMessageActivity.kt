@@ -14,6 +14,7 @@ import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 
 import kotlinx.android.synthetic.main.activity_new_message.*
+import kotlinx.android.synthetic.main.user_row_new_message.view.*
 
 class NewMessageActivity : AppCompatActivity() {
 
@@ -23,13 +24,13 @@ class NewMessageActivity : AppCompatActivity() {
 
 supportActionBar?.title="Select User"
 
-        val adapter = GroupAdapter<GroupieViewHolder>()
-
-        adapter.add(UserItem())
-        adapter.add(UserItem())
-        adapter.add(UserItem())
-
-        recyclerView_newMessage.adapter=adapter
+//        val adapter = GroupAdapter<GroupieViewHolder>()
+//
+//        adapter.add(UserItem())
+//        adapter.add(UserItem())
+//        adapter.add(UserItem())
+//
+//        recyclerView_newMessage.adapter=adapter
 
         fetchUsers()
 
@@ -39,9 +40,17 @@ supportActionBar?.title="Select User"
         val ref = FirebaseDatabase.getInstance().getReference("/users")
         ref.addListenerForSingleValueEvent(object: ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {
+                val adapter = GroupAdapter<GroupieViewHolder>()
+
                 p0.children.forEach{
                     Log.d("NewMessage",it.toString())
+                    val user =it.getValue(User::class.java)
+                    if (user!=null){
+                        adapter.add(UserItem(user))
+
+                    }
                 }
+                recyclerView_newMessage.adapter =adapter
             }
             override fun onCancelled(p0: DatabaseError) {
 
@@ -51,11 +60,10 @@ supportActionBar?.title="Select User"
     }
 }
 
-class UserItem:Item<GroupieViewHolder>(){
+class UserItem(val user:User):Item<GroupieViewHolder>(){
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
 
-// will be called in our list for each user object later...
-
+viewHolder.itemView.userName_textView.text=user.username
     }
 
     override fun getLayout(): Int {

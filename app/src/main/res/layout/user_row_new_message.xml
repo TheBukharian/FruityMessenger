@@ -20,7 +20,7 @@
         app:srcCompat="@android:drawable/btn_dialog" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/userName_textView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
