@@ -9,6 +9,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.squareup.picasso.Picasso
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
@@ -21,6 +22,7 @@ class NewMessageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_message)
+
 
 supportActionBar?.title="Select User"
 
@@ -64,6 +66,9 @@ class UserItem(val user:User):Item<GroupieViewHolder>(){
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
 
 viewHolder.itemView.userName_textView.text=user.username
+
+        // This shit downloads Avatar for users from FirebaseDatabase
+        Picasso.get().load(user.profileImage).into(viewHolder.itemView.imageView_userName)
     }
 
     override fun getLayout(): Int {

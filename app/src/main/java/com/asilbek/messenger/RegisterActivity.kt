@@ -72,8 +72,13 @@ class RegisterActivity : AppCompatActivity() {
 
 
         RegBtn.setOnClickListener {
+            if(selectedPhotoUri==null){
+                Toast.makeText(this,"Please select a photo",Toast.LENGTH_LONG).show()
+            }
+            else {
 
-            performRegistter()
+                performRegistter()
+            }
 
 
 
