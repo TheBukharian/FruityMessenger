@@ -1,14 +1,13 @@
-package com.asilbek.messenger
+package com.asilbek.messenger.RegisterLogin
 
-import android.content.Intent
 import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.util.Log
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import com.asilbek.messenger.R
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_register.*
 
 class LoginActivity :AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,10 +1,11 @@
-package com.asilbek.messenger
+package com.asilbek.messenger.Messages
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.auth.FirebaseAuth
+import com.asilbek.messenger.R
+import com.asilbek.messenger.RegisterLogin.User
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -52,6 +53,14 @@ supportActionBar?.title="Select User"
 
                     }
                 }
+
+                adapter.setOnItemClickListener{item,view->
+                    val intent =Intent(view.context,ChatLogActivity::class.java)
+                    startActivity(intent)
+
+                    finish()
+
+                }
                 recyclerView_newMessage.adapter =adapter
             }
             override fun onCancelled(p0: DatabaseError) {
@@ -62,7 +71,7 @@ supportActionBar?.title="Select User"
     }
 }
 
-class UserItem(val user:User):Item<GroupieViewHolder>(){
+class UserItem(val user: User):Item<GroupieViewHolder>(){
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
 
 viewHolder.itemView.userName_textView.text=user.username
