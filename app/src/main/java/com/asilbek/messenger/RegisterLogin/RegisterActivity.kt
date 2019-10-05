@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.graphics.drawable.AnimationDrawable
 import android.net.Uri
+import android.os.Parcelable
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.LinearLayout
@@ -17,6 +18,7 @@ import com.asilbek.messenger.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
+import kotlinx.android.parcel.Parcelize
 import kotlinx.android.synthetic.main.activity_register.*
 import java.util.*
 
@@ -196,6 +198,7 @@ class RegisterActivity : AppCompatActivity() {
 
 
 }
-class  User(val uid:String, val username:String,val profileImage: String){
+@Parcelize
+  class  User(val uid:String, val username:String,val profileImage: String):Parcelable{
     constructor():this("","","")
 }
