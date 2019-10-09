@@ -30,6 +30,9 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+
+        //Background Animation Here:
+
         val your_Layout = findViewById<LinearLayout>(R.id.main_container)
         val animationDrawable = your_Layout.background as AnimationDrawable
         animationDrawable.setEnterFadeDuration(4000)
