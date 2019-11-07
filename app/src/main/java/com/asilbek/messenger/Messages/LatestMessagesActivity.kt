@@ -23,6 +23,7 @@ companion object {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_latest_messages)
 
+
         fetchCurrentUser()
         verifyUserIsLoggedIn()
     }

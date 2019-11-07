@@ -12,7 +12,8 @@
         <activity android:name=".Messages.ChatLogActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Messages.LatestMessagesActivity" />
+                android:value=".Messages.LatestMessagesActivity"
+                />
         </activity>
         <activity android:name=".Messages.LatestMessagesActivity">
             <intent-filter>
