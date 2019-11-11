@@ -49,7 +49,11 @@ Log.d(TAG,"Attempt to send a messsage...")
         }
     }
     private fun listenForMessages(){
-        val ref = FirebaseDatabase.getInstance().getReference("/messages")
+        val fromId=FirebaseAuth.getInstance().uid
+        val toId=toUser?.uid
+
+
+        val ref = FirebaseDatabase.getInstance().getReference("/user-messages/$fromId/$toId")
 
         ref.addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
@@ -87,8 +91,8 @@ Log.d(TAG,"Attempt to send a messsage...")
 
         })
     }
-    private  fun performSendMessage(){
 
+    private  fun performSendMessage(){
 
         //Here we will send messages to Firebase...
 
@@ -101,7 +105,9 @@ Log.d(TAG,"Attempt to send a messsage...")
         if(fromId==null)return
 
 
-        val reference=FirebaseDatabase.getInstance().getReference("/messages").push()
+//        val reference=FirebaseDatabase.getInstance().getReference("/messages").push()
+        val reference=FirebaseDatabase.getInstance().getReference("/user-messages/$fromId/$toId").push()
+
 
         val chatMessage= ChatMessage(reference.key!!,text,fromId,toId,System.currentTimeMillis()/1000)
 

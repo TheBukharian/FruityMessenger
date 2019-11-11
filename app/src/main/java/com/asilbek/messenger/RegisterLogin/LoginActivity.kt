@@ -30,9 +30,24 @@ backText.setOnClickListener {
         loginBtn.setOnClickListener {
             val email=EmailLogin.text.toString()
             val password=PasswordLogin.text.toString()
+            Log.d("Login","Attempt login with email/password: $email/****")
 
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email,password)
-             //   .addOnCompleteListener()
+               .addOnCompleteListener{
+
+                   if (!it.isSuccessful) return@addOnCompleteListener
+                   //else if successful
+
+                   Log.d("Login","Successfully Signed In user: ${it.result?.user?.uid}")
+
+
+
+
+               }
+                .addOnFailureListener{
+                    Log.d("Login","Failed to Sign in User: ${it.message}")
+                }
+
 
         }
     }
