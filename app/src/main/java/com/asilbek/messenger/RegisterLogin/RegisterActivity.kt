@@ -11,8 +11,12 @@ import android.net.Uri
 import android.os.Parcelable
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
+import android.view.View.VISIBLE
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.core.view.isVisible
 import com.asilbek.messenger.Messages.LatestMessagesActivity
 import com.asilbek.messenger.R
 import com.google.firebase.auth.FirebaseAuth
@@ -50,25 +54,28 @@ class RegisterActivity : AppCompatActivity() {
 
 
 
-//            Thread.sleep(1000)
-//
-//            val b = findViewById<View>(R.id.deleteImageBtn)
-//            b.setVisibility(VISIBLE)
-//            deleteImageBtn.setOnClickListener {
-//
+            Thread.sleep(1000)
 
-//
-//                if (PhotoImageView!=null&& PhotoBtn!=null){ PhotoImageView.setImageResource(0)
-//                    }
-//
-//                else {
-//
-//                    Toast.makeText(this, "No Image selected!", Toast.LENGTH_LONG)
-//                        .show()
-//                }
-//
-//
-//            }
+            val b = findViewById<View>(R.id.deleteImageBtn)
+            b.setVisibility(VISIBLE)
+            deleteImageBtn.setOnClickListener {
+
+
+
+                if (PhotoImageView!=null&& PhotoBtn!=null){
+                    PhotoImageView.setImageBitmap(null)
+                    PhotoImageView.setBackgroundResource(R.drawable.shadow)
+
+                    }
+
+                else {
+
+                    Toast.makeText(this, "No Image selected!", Toast.LENGTH_LONG)
+                        .show()
+                }
+
+
+            }
 
         }
 
@@ -186,8 +193,7 @@ class RegisterActivity : AppCompatActivity() {
     private fun saveUserToFirebaseDatabase(profileImageUrl: String){
         val uid =FirebaseAuth.getInstance().uid?:""
         val ref=FirebaseDatabase.getInstance().getReference("/users/$uid")
-        val user=
-            User(uid, NameText.text.toString(), profileImageUrl)
+        val user= User(uid, NameText.text.toString(), profileImageUrl)
 
         ref.setValue(user)
             .addOnSuccessListener{
@@ -202,6 +208,6 @@ class RegisterActivity : AppCompatActivity() {
 
 }
 @Parcelize
-  class  User(val uid:String, val username:String,val profileImage: String):Parcelable{
+  public class  User(val uid:String, val username:String,val profileImage: String):Parcelable{
     constructor():this("","","")
 }

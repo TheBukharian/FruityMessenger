@@ -30,9 +30,23 @@ import kotlinx.android.synthetic.main.custom_toast.*
 import kotlinx.android.synthetic.main.custom_toast.view.*
 import kotlinx.android.synthetic.main.user_row_new_message.*
 import kotlinx.android.synthetic.main.user_row_new_message.view.*
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import com.google.firebase.auth.FirebaseUser
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.widget.TextView
+import com.asilbek.messenger.Messages.ChatLogActivity
+import com.asilbek.messenger.Messages.NewMessageActivity
+import com.asilbek.messenger.Messages.UserItem
+import com.google.firebase.database.DatabaseError
+import com.xwray.groupie.GroupAdapter
+import kotlinx.android.synthetic.main.activity_new_message.*
 
 
 class LoginActivity :AppCompatActivity() {
+    private lateinit var userNameShow: User
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -55,6 +69,7 @@ class LoginActivity :AppCompatActivity() {
             val password = PasswordLogin.text.toString()
             Log.d("Login", "Attempt login with email/password: $email/****")
 
+
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener {
 
@@ -65,7 +80,18 @@ class LoginActivity :AppCompatActivity() {
 
 
 
+
+
+
                     //-------------------Dialog box
+
+
+                    //Get username from Database
+
+//                    val currentUser=FirebaseDatabase.getInstance().reference.child("username")
+//                                        accDialogName.text = currentUser.toString()
+
+
                     val mDialogView=LayoutInflater.from(this).inflate(R.layout.custom_toast,null)
 
                     //Alert Dialog Builder:
@@ -74,13 +100,12 @@ class LoginActivity :AppCompatActivity() {
 
 
 
-                    //get Username from Firebase Database and reassign into TextView :
-
 
 
 
                     //Show Dialog:
                     val mAlertDialog=mBuilder.show()
+
 
 
                     mDialogView.continueBtn.setOnClickListener {
