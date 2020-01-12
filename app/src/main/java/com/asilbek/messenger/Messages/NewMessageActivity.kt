@@ -4,8 +4,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.EditText
+import android.widget.TextView
+import androidx.core.view.isVisible
 import com.asilbek.messenger.R
 import com.asilbek.messenger.RegisterLogin.User
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -14,8 +19,10 @@ import com.squareup.picasso.Picasso
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
+import de.hdodenhof.circleimageview.CircleImageView
 
 import kotlinx.android.synthetic.main.activity_new_message.*
+import kotlinx.android.synthetic.main.user_row_new_message.*
 import kotlinx.android.synthetic.main.user_row_new_message.view.*
 
 class NewMessageActivity : AppCompatActivity() {
@@ -27,13 +34,7 @@ class NewMessageActivity : AppCompatActivity() {
 
 supportActionBar?.title="Select User"
 
-//        val adapter = GroupAdapter<GroupieViewHolder>()
-//
-//        adapter.add(UserItem())
-//        adapter.add(UserItem())
-//        adapter.add(UserItem())
-//
-//        recyclerView_newMessage.adapter=adapter
+
 
         fetchUsers()
 
@@ -46,7 +47,13 @@ supportActionBar?.title="Select User"
         val ref = FirebaseDatabase.getInstance().getReference("/users")
         ref.addListenerForSingleValueEvent(object: ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {
+
+
+
+
                 val adapter = GroupAdapter<GroupieViewHolder>()
+                val bi = findViewById<View>(R.id.NoUsersYetText)
+
 
                 p0.children.forEach{
                     Log.d("NewMessage",it.toString())
@@ -54,6 +61,12 @@ supportActionBar?.title="Select User"
                     if (user!=null){
                         adapter.add(UserItem(user))
 
+                        bi.visibility = View.GONE
+
+                    }
+                    else {
+
+                        bi.visibility = View.VISIBLE
                     }
                 }
 
@@ -74,16 +87,29 @@ supportActionBar?.title="Select User"
 
         })
     }
+
 }
 
 class UserItem(val user: User):Item<GroupieViewHolder>(){
+
+
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
 
-viewHolder.itemView.userName_textView.text=user.username
 
-        // This shit downloads Avatar for users from FirebaseDatabase
+
+        viewHolder.itemView.userName_textView.text=user.username
+
+
+
+        // This  downloads Avatar for users from FirebaseDatabase
+
+
+
         Picasso.get().load(user.profileImage).into(viewHolder.itemView.imageView_userName)
+
+
     }
+
 
     override fun getLayout(): Int {
 return R.layout.user_row_new_message

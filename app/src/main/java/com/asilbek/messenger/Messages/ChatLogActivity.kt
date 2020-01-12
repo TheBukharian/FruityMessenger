@@ -63,7 +63,7 @@ Log.d(TAG,"Attempt to send a messsage...")
                     Log.d(TAG, chatMessage.text)
 
                     if(chatMessage.fromId==FirebaseAuth.getInstance().uid){
-                        val currentUser=LatestMessagesActivity.currentUser
+                        val currentUser=LatestMessagesActivity.currentuser
                         adapter.add(ChatFromItem(chatMessage.text,currentUser!!))
 
                     }
@@ -144,7 +144,7 @@ class ChatToItem(val text:String,val user:User):Item<GroupieViewHolder>(){
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         viewHolder.itemView.textView_to_row.text=text
 
-        //loa our image into star
+        //load our image into star
         val uri=user.profileImage
         val targetImageView=viewHolder.itemView.imageView_chat_to_row
         Picasso.get().load(uri).into(targetImageView)

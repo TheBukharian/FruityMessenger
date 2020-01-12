@@ -126,8 +126,7 @@ class RegisterActivity : AppCompatActivity() {
             PhotoImageView.setImageBitmap(bitmap)
             PhotoBtn.alpha=0f
 
-            //val bitmapDrawable=BitmapDrawable(bitmap)
-            //PhotoBtn.setBackgroundDrawable(bitmapDrawable)
+
         }
     }
 
