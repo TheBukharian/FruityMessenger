@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.asilbek.messenger.R
+import com.asilbek.messenger.RegisterLogin.LoginActivity
 import com.asilbek.messenger.RegisterLogin.RegisterActivity
 import com.asilbek.messenger.RegisterLogin.User
 import com.google.firebase.auth.FirebaseAuth
@@ -35,14 +36,17 @@ companion object {
             startActivity(intent)
         }
     }
-    private  fun fetchCurrentUser(){
+       fun fetchCurrentUser(){
         val uid = FirebaseAuth.getInstance().uid
         val ref=FirebaseDatabase.getInstance().getReference("/users/$uid")
+           var aa=null
         ref.addListenerForSingleValueEvent(object: ValueEventListener{
 
             override fun onDataChange(p0: DataSnapshot) {
                 currentuser=p0.getValue(User::class.java)
                 Log.d("LatestMessages","Current user ${currentuser?.username}")
+               val accName= currentuser?.username
+
 
             }
             override fun onCancelled(p0: DatabaseError) {

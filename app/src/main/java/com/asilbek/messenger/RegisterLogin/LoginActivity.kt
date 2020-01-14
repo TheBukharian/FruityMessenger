@@ -43,25 +43,12 @@ class LoginActivity :AppCompatActivity() {
             finish()
         }
 
+
         loginBtn.setOnClickListener {
             val email = EmailLogin.text.toString()
             val password = PasswordLogin.text.toString()
 
-//              fun fetchCurrentUser(){
-//                val uid = FirebaseAuth.getInstance().uid
-//                val ref= FirebaseDatabase.getInstance().getReference("/users/$uid")
-//                ref.addListenerForSingleValueEvent(object: ValueEventListener {
-//
-//                    override fun onDataChange(p0: DataSnapshot) {
-//                        LatestMessagesActivity.currentuser =p0.getValue(User::class.java)
-//                        Log.d("LatestMessages","Current user ${LatestMessagesActivity.currentuser?.username}")
-//
-//                    }
-//                    override fun onCancelled(p0: DatabaseError) {
-//
-//                    }
-//                })
-//            }
+
 
             Log.d("Login", "Attempt login with email/password: $email/****")
 
@@ -80,20 +67,14 @@ class LoginActivity :AppCompatActivity() {
 
 
 
-                    //-------------------Dialog box
-
-
-                    //Get username from Database
 
 
 
-//                    accDialogName.text= currentUser?.username
-
+                    //-------------------Dialog box---------------------------------
 
 
 
                     val mDialogView=LayoutInflater.from(this).inflate(R.layout.custom_toast,null)
-
 
 
                     //Alert Dialog Builder:
@@ -130,6 +111,10 @@ class LoginActivity :AppCompatActivity() {
 
 
     }
+
+    //set User`s name into Welcome Toast
+
+
 
 
 
