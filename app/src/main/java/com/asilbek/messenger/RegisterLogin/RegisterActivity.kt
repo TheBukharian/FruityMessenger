@@ -13,10 +13,8 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.view.View.VISIBLE
-import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.Toast
-import androidx.core.view.isVisible
 import com.asilbek.messenger.Messages.LatestMessagesActivity
 import com.asilbek.messenger.R
 import com.google.firebase.auth.FirebaseAuth

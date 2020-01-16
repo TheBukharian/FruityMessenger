@@ -45,11 +45,9 @@ supportActionBar?.title="Select User"
     }
     private fun fetchUsers(){
         val ref = FirebaseDatabase.getInstance().getReference("/users")
+
         ref.addListenerForSingleValueEvent(object: ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {
-
-
-
 
                 val adapter = GroupAdapter<GroupieViewHolder>()
                 val bi = findViewById<View>(R.id.NoUsersYetText)

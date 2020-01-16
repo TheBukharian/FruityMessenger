@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Messenger</string>
+    <string name="back_to_registration">Back to Registration</string>
 </resources>
