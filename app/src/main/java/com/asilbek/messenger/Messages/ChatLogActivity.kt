@@ -56,14 +56,15 @@ Log.d(TAG,"Attempt to send a messsage...")
         val ref = FirebaseDatabase.getInstance().getReference("/user-messages/$fromId/$toId")
 
         ref.addChildEventListener(object : ChildEventListener {
-            override fun onChildAdded(p0: DataSnapshot, p1: String?) {
 
+            override fun onChildAdded(p0: DataSnapshot, p1: String?) {
               val  chatMessage=  p0.getValue(ChatMessage::class.java)
+
                 if (chatMessage!=null) {
                     Log.d(TAG, chatMessage.text)
 
                     if(chatMessage.fromId==FirebaseAuth.getInstance().uid){
-                        val currentUser=LatestMessagesActivity.currentuser
+                        val currentUser=LatestMessagesActivity.currentuser?:return
                         adapter.add(ChatFromItem(chatMessage.text,currentUser!!))
 
                     }
@@ -104,31 +105,29 @@ Log.d(TAG,"Attempt to send a messsage...")
 
         if(fromId==null)return
 
-
-//        val reference=FirebaseDatabase.getInstance().getReference("/messages").push()
         val reference=FirebaseDatabase.getInstance().getReference("/user-messages/$fromId/$toId").push()
 
+        val toReference=FirebaseDatabase.getInstance().getReference("/user-messages/$toId/$fromId").push()
 
         val chatMessage= ChatMessage(reference.key!!,text,fromId,toId,System.currentTimeMillis()/1000)
-
 
         reference.setValue(chatMessage)
             .addOnSuccessListener {
                 Log.d(TAG,"Saved our chat message: ${reference.key}")
+                editText_chat_log.text.clear()
+                recyclerview_chat_log.scrollToPosition(adapter.itemCount-1)
 
             }
 
+        toReference.setValue(chatMessage)
 
     }
-
-
-
 }
 
 
-class ChatFromItem(val text:String,val user:User):Item<GroupieViewHolder>(){
+class ChatFromItem(val text1:String,val user:User):Item<GroupieViewHolder>(){
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
-        viewHolder.itemView.textView_from_row.text=text
+        viewHolder.itemView.textView_from_row.text=text1
 
         val uri=user.profileImage
         val targetImageView=viewHolder.itemView.imageView_chat_from_row
@@ -140,9 +139,9 @@ return R.layout.chat_from_row
     }
 
 }
-class ChatToItem(val text:String,val user:User):Item<GroupieViewHolder>(){
+class ChatToItem(val text2:String,val user:User):Item<GroupieViewHolder>(){
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
-        viewHolder.itemView.textView_to_row.text=text
+        viewHolder.itemView.textView_to_row.text=text2
 
         //load our image into star
         val uri=user.profileImage
