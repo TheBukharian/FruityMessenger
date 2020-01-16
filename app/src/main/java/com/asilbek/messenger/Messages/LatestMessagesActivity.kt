@@ -23,11 +23,11 @@ companion object {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_latest_messages)
 
-
         fetchCurrentUser()
         verifyUserIsLoggedIn()
+
     }
-    private fun verifyUserIsLoggedIn(){
+       private fun verifyUserIsLoggedIn(){
         val uid = FirebaseAuth.getInstance().uid
         if(uid==null) {
             val intent=Intent(this, RegisterActivity::class.java)
@@ -35,6 +35,7 @@ companion object {
             startActivity(intent)
         }
     }
+
        private fun fetchCurrentUser(){
         val uid = FirebaseAuth.getInstance().uid
         val ref=FirebaseDatabase.getInstance().getReference("/users/$uid")

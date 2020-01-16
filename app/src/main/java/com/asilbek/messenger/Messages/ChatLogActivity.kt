@@ -48,6 +48,7 @@ Log.d(TAG,"Attempt to send a messsage...")
 
         }
     }
+
     private fun listenForMessages(){
         val fromId=FirebaseAuth.getInstance().uid
         val toId=toUser?.uid
