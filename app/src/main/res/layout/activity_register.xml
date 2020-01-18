@@ -144,10 +144,10 @@
             app:layout_constraintTop_toBottomOf="@id/PhotoBtn"
             app:layout_constraintLeft_toLeftOf="@id/PhotoBtn"
             app:layout_constraintRight_toRightOf="@id/PhotoBtn"
-
+            android:layout_gravity="center"
             android:layout_height="205dp"
             android:layout_marginTop="-812dp"
-            android:layout_marginLeft="120dp"
+            android:layout_marginLeft="0dp"
             app:srcCompat="@drawable/liquid" />
 
 
