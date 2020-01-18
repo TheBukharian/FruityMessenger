@@ -6,7 +6,7 @@
     android:layout_height="90dp">
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/imageview_latestmessage"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
@@ -18,22 +18,23 @@
         app:srcCompat="@android:drawable/btn_star_big_on" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/username_textView_latestmessage"
         android:layout_width="191dp"
         android:layout_height="19dp"
         android:layout_marginStart="16dp"
         android:text="Username"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/imageView6"
-        app:layout_constraintTop_toTopOf="@+id/imageView6" />
+        app:layout_constraintStart_toEndOf="@+id/imageview_latestmessage"
+        app:layout_constraintTop_toTopOf="@+id/imageview_latestmessage" />
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="174dp"
-        android:layout_height="34dp"
+        android:id="@+id/message_textView_latestmessage"
+        android:layout_width="152dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="8dp"
         android:text="Latest messages of the users "
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintBottom_toBottomOf="@+id/imageview_latestmessage"
+        app:layout_constraintStart_toStartOf="@+id/username_textView_latestmessage"
+        app:layout_constraintTop_toBottomOf="@+id/username_textView_latestmessage" />
 </androidx.constraintlayout.widget.ConstraintLayout>

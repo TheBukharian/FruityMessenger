@@ -122,6 +122,8 @@ Log.d(TAG,"Attempt to send a messsage...")
 
         toReference.setValue(chatMessage)
 
+        val latestMessagesRef=FirebaseDatabase.getInstance().getReference("/latest-messages/$fromId/$toId")
+        latestMessagesRef.setValue(chatMessage)
     }
 }
 
