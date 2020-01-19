@@ -8,25 +8,35 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_newMessage"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="#CC7B43"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/NoUsersYetText"
-        android:layout_width="0dp"
-        android:layout_height="64dp"
+        android:id="@+id/Network"
+        android:layout_width="258dp"
+        android:layout_height="87dp"
         android:layout_marginTop="212dp"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:text="No Users Yet"
+        android:fontFamily="sans-serif-light"
+        android:text="Check Network Connection!"
         android:textAlignment="center"
-        android:textColor="#481B1B1B"
+        android:textColor="#61F5F1F1"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="130dp"
+        android:layout_height="72dp"
+        app:layout_constraintEnd_toEndOf="@+id/Network"
+        app:layout_constraintStart_toStartOf="@+id/Network"
+        app:layout_constraintTop_toBottomOf="@+id/Network"
+        app:srcCompat="@android:drawable/ic_dialog_info" />
 </androidx.constraintlayout.widget.ConstraintLayout>

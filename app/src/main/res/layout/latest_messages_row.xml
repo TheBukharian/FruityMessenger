@@ -3,15 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="90dp">
+    android:layout_height="90dp"
+    android:background="@drawable/item_view_angles">
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/imageview_latestmessage"
+        app:layout_constraintEnd_toEndOf="@+id/imageview_latestmessage"
+        app:layout_constraintStart_toStartOf="@+id/imageview_latestmessage"
+        app:layout_constraintTop_toTopOf="@+id/imageview_latestmessage" />
 
-    <ImageView
+
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageview_latestmessage"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="58dp"
+        android:layout_height="58dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
+        app:civ_border_width="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,7 +34,8 @@
         android:layout_width="191dp"
         android:layout_height="19dp"
         android:layout_marginStart="16dp"
-        android:text="Username"
+        android:text="Loading..."
+        android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imageview_latestmessage"
         app:layout_constraintTop_toTopOf="@+id/imageview_latestmessage" />
@@ -32,9 +45,12 @@
         android:layout_width="152dp"
         android:layout_height="30dp"
         android:layout_marginTop="8dp"
-        android:text="Latest messages of the users "
+        android:text="Waiting for network connection..."
+        android:textColor="#90000000"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageview_latestmessage"
         app:layout_constraintStart_toStartOf="@+id/username_textView_latestmessage"
         app:layout_constraintTop_toBottomOf="@+id/username_textView_latestmessage" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

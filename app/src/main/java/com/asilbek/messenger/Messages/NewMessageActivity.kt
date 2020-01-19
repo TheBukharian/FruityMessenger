@@ -5,12 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.EditText
-import android.widget.TextView
-import androidx.core.view.isVisible
 import com.asilbek.messenger.R
 import com.asilbek.messenger.RegisterLogin.User
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -19,10 +15,8 @@ import com.squareup.picasso.Picasso
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
-import de.hdodenhof.circleimageview.CircleImageView
 
 import kotlinx.android.synthetic.main.activity_new_message.*
-import kotlinx.android.synthetic.main.user_row_new_message.*
 import kotlinx.android.synthetic.main.user_row_new_message.view.*
 
 class NewMessageActivity : AppCompatActivity() {
@@ -50,7 +44,8 @@ supportActionBar?.title="Select User"
             override fun onDataChange(p0: DataSnapshot) {
 
                 val adapter = GroupAdapter<GroupieViewHolder>()
-                val bi = findViewById<View>(R.id.NoUsersYetText)
+                val bi = findViewById<View>(R.id.Network)
+
 
 
                 p0.children.forEach{
@@ -60,13 +55,14 @@ supportActionBar?.title="Select User"
                         adapter.add(UserItem(user))
 
                         bi.visibility = View.GONE
-
+                        imageView6.visibility=View.GONE
                     }
                     else {
-
+                        imageView6.visibility=View.VISIBLE
                         bi.visibility = View.VISIBLE
                     }
                 }
+
 
                 adapter.setOnItemClickListener{item,view->
                     val userItem = item as UserItem

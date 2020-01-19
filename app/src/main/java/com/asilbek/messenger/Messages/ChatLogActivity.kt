@@ -73,6 +73,8 @@ Log.d(TAG,"Attempt to send a messsage...")
                         adapter.add(ChatToItem(chatMessage.text,toUser!!))
                     }
                 }
+                //Scroll to the bottom of list:
+                recyclerview_chat_log.scrollToPosition(adapter.itemCount-1)
             }
 
             override fun onCancelled(p0: DatabaseError) {
