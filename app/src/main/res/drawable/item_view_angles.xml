@@ -13,7 +13,7 @@
             <corners android:radius="10dip" android:bottomLeftRadius="200dp" android:topLeftRadius="200dp"/>
             <stroke android:width="2dip" android:color="#091409"/>
             <gradient android:angle="180"  />
-            <solid android:color="#6B8A65"/>
+            <solid android:color="#CDDC39"/>
         </shape>
     </item>
 </selector>

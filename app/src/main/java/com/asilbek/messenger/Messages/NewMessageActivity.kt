@@ -1,10 +1,13 @@
 package com.asilbek.messenger.Messages
 
 import android.content.Intent
+import android.graphics.drawable.AnimationDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.LinearLayout
+import androidx.recyclerview.widget.RecyclerView
 import com.asilbek.messenger.R
 import com.asilbek.messenger.RegisterLogin.User
 import com.google.firebase.database.DataSnapshot
@@ -24,6 +27,12 @@ class NewMessageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_message)
+
+        val your_Layout2 = findViewById<RecyclerView>(R.id.recyclerView_newMessage)
+        val animationDrawable = your_Layout2.background as AnimationDrawable
+        animationDrawable.setEnterFadeDuration(4000)
+        animationDrawable.setExitFadeDuration(4000)
+        animationDrawable.start()
 
 
 supportActionBar?.title="Select User"

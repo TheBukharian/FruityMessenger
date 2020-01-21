@@ -2,6 +2,7 @@ package com.asilbek.messenger.Messages
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import com.asilbek.messenger.R
@@ -114,18 +115,28 @@ Log.d(TAG,"Attempt to send a messsage...")
 
         val chatMessage= ChatMessage(reference.key!!,text,fromId,toId,System.currentTimeMillis()/1000)
 
-        reference.setValue(chatMessage)
-            .addOnSuccessListener {
-                Log.d(TAG,"Saved our chat message: ${reference.key}")
-                editText_chat_log.text.clear()
-                recyclerview_chat_log.scrollToPosition(adapter.itemCount-1)
 
-            }
+        if(!TextUtils.isEmpty(text)) {
+            reference.setValue(chatMessage)
+                .addOnSuccessListener {
+                    Log.d(TAG, "Saved our chat message: ${reference.key}")
 
-        toReference.setValue(chatMessage)
+                    editText_chat_log.text.clear()
+                    recyclerview_chat_log.scrollToPosition(adapter.itemCount - 1)
 
-        val latestMessagesRef=FirebaseDatabase.getInstance().getReference("/latest-messages/$fromId/$toId")
-        latestMessagesRef.setValue(chatMessage)
+                }
+
+            toReference.setValue(chatMessage)
+
+
+            val latestMessagesRef =
+                FirebaseDatabase.getInstance().getReference("/latest-messages/$fromId/$toId")
+            latestMessagesRef.setValue(chatMessage)
+        }
+        else{
+            Log.d(TAG, "Empty string")
+
+        }
     }
 }
 

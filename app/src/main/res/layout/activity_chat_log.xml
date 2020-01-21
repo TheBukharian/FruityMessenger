@@ -21,13 +21,12 @@
 
     <Button
         android:id="@+id/sendBtn_chatlog"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_width="50dp"
+        android:layout_height="45dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Send"
+        android:background="@android:drawable/ic_menu_send"
         android:textColor="#fff"
-        android:background="@drawable/send_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -35,7 +34,7 @@
         android:id="@+id/recyclerview_chat_log"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#363636"
+        android:background="#A5A5A5"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@+id/editText_chat_log"
         app:layout_constraintEnd_toEndOf="parent"
