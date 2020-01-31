@@ -34,7 +34,7 @@
         android:id="@+id/recyclerview_chat_log"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#A5A5A5"
+        android:background="#D19900"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@+id/editText_chat_log"
         app:layout_constraintEnd_toEndOf="parent"

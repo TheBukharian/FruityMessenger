@@ -10,10 +10,20 @@
         android:id="@+id/recyclerview_latest_messages"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#F7F7F7"
+        android:background="#CDDC39"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar_latest"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="40dp"
+        android:layout_height="37dp"
+        app:layout_constraintBottom_toBottomOf="@+id/recyclerview_latest_messages"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/recyclerview_latest_messages"
+        app:layout_constraintTop_toTopOf="@+id/recyclerview_latest_messages" />
 </androidx.constraintlayout.widget.ConstraintLayout>

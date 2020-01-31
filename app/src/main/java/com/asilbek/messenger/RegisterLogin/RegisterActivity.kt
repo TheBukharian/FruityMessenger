@@ -48,7 +48,6 @@ class RegisterActivity : AppCompatActivity() {
             startActivityForResult(intent,0)
 
 
-            //                //NEED TO CORRECT THIS PART FOR DELETING
 
 
 
@@ -58,25 +57,18 @@ class RegisterActivity : AppCompatActivity() {
             b.setVisibility(VISIBLE)
             deleteImageBtn.setOnClickListener {
 
-
-
                 if (PhotoImageView!=null&& PhotoBtn!=null){
+                    selectedPhotoUri=null
                     PhotoImageView.setImageBitmap(null)
                     PhotoImageView.setBackgroundResource(R.drawable.shadow)
-
                     }
-
                 else {
 
                     Toast.makeText(this, "No Image selected!", Toast.LENGTH_LONG)
                         .show()
                 }
-
-
             }
-
         }
-
 
 
         RegBtn.setOnClickListener {
@@ -84,7 +76,6 @@ class RegisterActivity : AppCompatActivity() {
                 Toast.makeText(this,"Please select a photo",Toast.LENGTH_LONG).show()
             }
             else {
-
                 performRegistter()
             }
 
@@ -134,11 +125,12 @@ class RegisterActivity : AppCompatActivity() {
         val email = EmailText.text.toString()
         val password = PasswordText.text.toString()
 
-        if (email.isEmpty() || password.isEmpty()) {
-            Toast.makeText(this, "Please Enter the Email and Password!", Toast.LENGTH_LONG)
+        if (email.isEmpty() || password.isEmpty()||NameText.text.isEmpty()) {
+            Toast.makeText(this, "Please Enter the Name,Email and Password!", Toast.LENGTH_LONG)
                 .show()
             return
         }
+
 
         Log.d("RegisterActivity", "Email is: $email")
         Log.d("RegisterActivity", "Pasword: $password")
@@ -163,7 +155,7 @@ class RegisterActivity : AppCompatActivity() {
             }
             .addOnFailureListener {
                 Log.d("RegisterActivity", "Failed to create a user: ${it.message}")
-                Toast.makeText(this, "Failed!Check Network Connection!", Toast.LENGTH_LONG)
+                Toast.makeText(this, "Failed!Check Network Connection or email!", Toast.LENGTH_LONG)
                     .show()
             }
     }

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="12dp">
+    android:layout_marginBottom="5dp">
 
 
     <TextView
@@ -32,5 +32,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/btn_star_big_on" />
+
+    <TextView
+        android:id="@+id/time_from_row"
+        android:layout_width="39dp"
+        android:layout_height="17dp"
+        android:text="12:00"
+        app:layout_constraintStart_toEndOf="@+id/textView_from_row"
+        app:layout_constraintTop_toTopOf="@+id/textView_from_row" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

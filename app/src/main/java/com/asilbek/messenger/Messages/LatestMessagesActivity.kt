@@ -37,6 +37,8 @@ companion object {
         supportActionBar?.setLogo(R.mipmap.ic_launcher)
         supportActionBar?.setDisplayUseLogoEnabled(true)
 
+        progressBar_latest.visibility=View.VISIBLE
+
         recyclerview_latest_messages.adapter=adapter
 
 
@@ -65,6 +67,7 @@ companion object {
     private fun refreshrecyclerMessages(){
         adapter.clear()
         latestMessagesMap.values.forEach{
+            progressBar_latest.visibility=View.GONE
             adapter.add(LatestMessageRow(it))
         }
     }

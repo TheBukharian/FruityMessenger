@@ -9,7 +9,7 @@
     android:background="@drawable/background"
     android:orientation="vertical" >
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/EmailLogin"
         android:layout_width="355dp"
         android:layout_height="49dp"
@@ -22,7 +22,7 @@
         android:inputType="textEmailAddress"
         android:paddingLeft="15dp" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/PasswordLogin"
         android:layout_width="355dp"
         android:layout_height="49dp"
