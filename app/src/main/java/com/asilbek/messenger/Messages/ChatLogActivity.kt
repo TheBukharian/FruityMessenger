@@ -1,5 +1,6 @@
 package com.asilbek.messenger.Messages
 
+import android.annotation.TargetApi
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -77,12 +78,12 @@ Log.d(TAG,"Attempt to send a messsage...")
 
                     if(chatMessage.fromId==FirebaseAuth.getInstance().uid){
                         val currentUser=LatestMessagesActivity.currentuser?:return
-                        adapter.add(ChatFromItem(chatMessage.text,currentUser!!))
+                        adapter.add(ChatFromItem(chatMessage.text,currentUser!!,chatMessage.time))
 
 
                     }
                     else{
-                        adapter.add(ChatToItem(chatMessage.text,toUser!!))
+                        adapter.add(ChatToItem(chatMessage.text,toUser!!,chatMessage.time))
 
 
 
@@ -108,6 +109,7 @@ Log.d(TAG,"Attempt to send a messsage...")
         })
     }
 
+    @TargetApi(Build.VERSION_CODES.O)
     private  fun performSendMessage(){
 
         //Here we will send messages to Firebase...
@@ -117,6 +119,9 @@ Log.d(TAG,"Attempt to send a messsage...")
         val fromId =FirebaseAuth.getInstance().uid
         val user =intent.getParcelableExtra<User>(NewMessageActivity.USER_KEY)
 
+        val time =LocalTime.now()
+        val sendTime=time.format(DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT))
+
         val toId=user.uid
 
         if(fromId==null)return
@@ -125,7 +130,7 @@ Log.d(TAG,"Attempt to send a messsage...")
 
         val toReference=FirebaseDatabase.getInstance().getReference("/user-messages/$toId/$fromId").push()
 
-        val chatMessage= ChatMessage(reference.key!!,text,fromId,toId,System.currentTimeMillis()/1000)
+        val chatMessage= ChatMessage(reference.key!!,text,fromId,toId,sendTime)
 
 
         if(!TextUtils.isEmpty(text)) {
@@ -152,13 +157,11 @@ Log.d(TAG,"Attempt to send a messsage...")
 }
 
 
-class ChatFromItem(val text1:String,val user:User):Item<GroupieViewHolder>(){
-    @RequiresApi(Build.VERSION_CODES.O)
+class ChatFromItem(val text1:String,val user:User,val time1:String):Item<GroupieViewHolder>(){
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         viewHolder.itemView.textView_from_row.text=text1
 
-        val time =LocalTime.now()
-        viewHolder.itemView.time_from_row.text=time.format(DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT))
+        viewHolder.itemView.time_from_row.text=time1
 
 
         val uri=user.profileImage
@@ -172,13 +175,11 @@ return R.layout.chat_from_row
     }
 
 }
-class ChatToItem(val text2:String,val user:User):Item<GroupieViewHolder>(){
-    @RequiresApi(Build.VERSION_CODES.O)
+class ChatToItem(val text2:String,val user:User,val time2:String):Item<GroupieViewHolder>(){
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         viewHolder.itemView.textView_to_row.text=text2
 
-        val time =LocalTime.now()
-        viewHolder.itemView.time_to_row.text=time.format(DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT))
+        viewHolder.itemView.time_to_row.text=time2
 
         //load our image into star
         val uri=user.profileImage

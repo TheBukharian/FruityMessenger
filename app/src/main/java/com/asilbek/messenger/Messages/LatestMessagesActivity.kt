@@ -46,7 +46,7 @@ companion object {
 
 
         adapter.setOnItemClickListener { item, view ->
-            Log.d(TAG,"123")
+            Log.d(TAG,"Latest Message Item Clicked")
             val intent=Intent(this,ChatLogActivity::class.java)
 
             val row=item as LatestMessageRow
