@@ -68,13 +68,14 @@ companion object {
         adapter.clear()
         latestMessagesMap.values.forEach{
             progressBar_latest.visibility=View.GONE
-            adapter.add(LatestMessageRow(it))
+            adapter.add(LatestMessageRow(it,it))
         }
     }
 
     private fun listenForLatestMassegas(){
         val fromId=FirebaseAuth.getInstance().uid
         val ref=FirebaseDatabase.getInstance().getReference("/latest-messages/$fromId")
+
 
         ref.addChildEventListener(object:ChildEventListener{
             override fun onChildRemoved(p0: DataSnapshot) {
