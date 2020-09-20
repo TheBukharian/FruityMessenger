@@ -1,5 +1,5 @@
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
-# FruityMessenger
+# LimondMessenger
 Go chat with the world!
 
 <img src="/i1.jpg" width="270" height="550"/>    <img src="/i2.jpg" width="270" height="550"/>    <img src="/i3.jpg" width="270" height="550"/>
